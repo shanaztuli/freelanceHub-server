@@ -28,37 +28,21 @@ app.get("/", (req, res) => {
 async function run() {
   try {
     await client.connect();
+    const db = client.db("freelance-db");
+    const jobsCollection = db.collection("jobs");
 
-    const db = client.db('freelance_db');
-    const jobsCollection = db.collection('jobs');
+    app.get("/jobs", async (req, res) => {
+      const result = await jobsCollection.find().toArray();
+      res.send(result);
+    });
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-  } finally {
-    await client.close();
+    console.log("MongoDB connected successfully!");
+  } catch (err) {
+    console.error(err);
   }
 }
-run().catch(console.dir);
+run();
+
 
 app.listen(port, () => {
   console.log(`Freelance market place server is running on port: ${port}`);
