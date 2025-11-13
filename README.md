@@ -1,6 +1,5 @@
 Project Name
-Server Live link : https://myfreelance-server.vercel.app/
-Freelance Hub
+Server Live link :https://freelance-hub-server-ebon.vercel.app/
 Features
 
 User Authentication – Secure login and registration using JWT tokens.
